@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Biodata Estetik - Adinda Pradipta</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts untuk Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Kustom Minimal untuk Tema (Gradasi dan Efek) */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --accent-color: #ff4b2b;
+            --bg-light: #f0f2f5;
+            --text-dark: #2d3436;
+            --white: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background: var(--primary-gradient) !important;
+        }
+        .hero-text h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text; /* Untuk dukungan Safari/Chrome lama */
+            background-clip: text;         /* Properti standar agar error hilang */
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary-custom {
+            background: var(--primary-gradient);
+            border: none;
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+        }
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 117, 252, 0.6);
+        }
+       .hero-image img {
+    border-radius: 20px;
+    border: 6px solid #d9d8f8;
+    /* Bayangan diperdalam dengan 4 lapisan untuk efek lebih dramatis dan realistis */
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.2),   /* Lapisan atas: ringan untuk transisi halus */
+        0 20px 40px rgba(0, 0, 0, 0.3),   /* Lapisan tengah: lebih pekat */
+        0 30px 60px rgba(0, 0, 0, 0.4),   /* Lapisan bawah: kedalaman lebih dalam */
+        0 50px 80px rgba(0, 0, 0, 0.1);   /* Lapisan terdalam: blur maksimal untuk efek jatuh */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Tambahkan transisi untuk box-shadow agar hover lebih smooth */
+}
+
+.hero-image img:hover {
+    transform: translateY(-10px); /* Efek melayang saat kursor menempel */
+    /* Bayangan diperkuat saat hover untuk efek lebih dinamis */
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.3),
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 35px 70px rgba(0, 0, 0, 0.5),
+        0 60px 100px rgba(0, 0, 0, 0.2);
+        }
+        .bio-box {
+            border-bottom: 5px solid #2575fc;
+        }
+        .portfolio-img img {
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        footer {
+            background: var(--primary-gradient);
+        }
+       .section-title {
+        border-bottom: 4px solid #2575fc; /* Menggunakan border biasa agar tidak melompat */
+        display: inline-block;
+        padding-bottom: 5px;
+        margin-bottom: 30px;
+        }
+        /* Efek Khusus untuk Tombol Download CV */
+        .btn-download-cv {
+            background-color: #ffc107 !important;
+            border: none;
+            color: #000 !important;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
+        }
+        .btn-download-cv:hover {
+            background-color: #e0a800 !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.8), 0 0 30px rgba(255, 193, 7, 0.6);
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1.05);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Bootstrap dengan Menu Baru -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="#home">Adino</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About me</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-download-cv btn-sm px-3 py-2 rounded-pill" href="cv-adinda-pradipta.pdf" download>Download CV</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section (Home) -->
+<section id="home" class="hero py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-6">
+                <div class="hero-text">
+                    <h1 class="display-4 fw-bold">Halo! Saya <br>Adinda Pradipta</h1>
+                    <p class="lead">Seorang Freelancer yang berfokus pada dunia Komunikasi dan Desain. Senang berbagi cerita melalui karya visual dan tulisan.</p>
+                    <button class="btn btn-primary-custom btn-lg px-4 py-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#contactModal">Learn More</button>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 text-center">
+                <div class="hero-image">
+                    <img src="https://media-cgk1-1.cdn.whatsapp.net/v/t61.24694-24/521371805_1540420163622895_6061330527791526999_n.jpg?ccb=11-4&oh=01_Q5Aa3wGWc0PHXmlCrLeQib2RfpFEeVwYGovQWT3zaT1P39nUkw&oe=6997D9DF&_nc_sid=5e03e0&_nc_cat=108" alt="Foto Profil" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 fw-bold">About Me</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card bio-box shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <strong class="text-primary text-uppercase small">Full Name</strong>
+                        <span class="d-block fw-semibold fs-5 mt-2">Adinda Pradipta</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bio-box shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <strong class="text-primary text-uppercase small">Education</strong>
+                        <span class="d-block fw-semibold fs-5 mt-2">S1 Ilmu Komunikasi</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bio-box shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <strong class="text-primary text-uppercase small">Job</strong>
+                        <span class="d-block fw-semibold fs-5 mt-2">Freelancer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6"> <div class="card bio-box shadow-sm h-100">
+        <div class="card-body text-center">
+            <strong class="text-primary text-uppercase small">Contact</strong>
+            <span class="d-block fw-semibold fs-5 mt-2" style="white-space: nowrap;">adinadino48@gmail.com</span>
+        </div>
+    </div>
+</div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bio-box shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <strong class="text-primary text-uppercase small">Hobby</strong>
+                        <span class="d-block fw-semibold fs-5 mt-2">Traveling & Culinary</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card bio-box shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <strong class="text-primary text-uppercase small">Address</strong>
+                        <span class="d-block fw-semibold fs-5 mt-2">Jakarta, Indonesia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Section -->
+<section id="services" class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 fw-bold">Service</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Web Design</h5>
+                        <p class="card-text">Membuat desain website yang responsif dan menarik untuk bisnis Anda.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Mobile App Development</h5>
+                        <p class="card-text">Pengembangan aplikasi mobile untuk UMKM dan startup.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">UI/UX Research</h5>
+                        <p class="card-text">Analisis dan desain pengalaman pengguna untuk produk digital.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section (Project) -->
+<section id="project" class="portfolio-section py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 fw-bold">Project</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card portfolio-item shadow-sm h-100">
+                    <div class="portfolio-img">
+                        <img src="https://nians.com/wp-content/uploads/2020/02/Guidelines-for-images-of-website-desig-title.jpg" alt="Web Design" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Web Design</h5>
+                        <p class="card-text">Tampilan landing page yang bersih dan minimalis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card portfolio-item shadow-sm h-100">
+                    <div class="portfolio-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToy-asPdz7dp0wyLSUj-B9PHaFom65nPu2Cg&s" alt="Mobile App" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Mobile App</h5>
+                        <p class="card-text">E-Commerce App untuk UMKM Lokal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card portfolio-item shadow-sm h-100">
+                    <div class="portfolio-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaaHSK1QHWP1W4FBQlcGN9UlG0JmB1CJfMEw&s" alt="UI Research" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">UI Research</h5>
+                        <p class="card-text">Analisis user experience untuk aplikasi travel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5 fw-bold">Testimonials</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <p class="card-text">"Adinda sangat profesional dan hasil kerjanya luar biasa!"</p>
+                        <strong>- Klien A</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <p class="card-text">"Desain web yang dibuat sangat responsif dan user-friendly."</p>
+                        <strong>- Klien B</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <p class="card-text">"Rekomendasi untuk freelancer terbaik di bidang desain!"</p>
+                        <strong>- Klien C</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-white text-center py-4">
+    <div class="container">
+        <p class="mb-0 fw-bold">&copy; 2026 Adinda Pradipta. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Modal Bootstrap untuk Contact -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Learn More</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Terima kasih telah tertarik! Silakan isi formulir di bawah atau hubungi saya via email: <strong>adinadino48@gmail.com</strong>.</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Nomor Telepon/WA" class="form-label">Nomor Telepon/WA</label>
+                        <input type="Nomor Telepon/WA" class="form-control" id="Nomor Telepon/WA" placeholder="Masukkan Nomor Telepon/WA Anda">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Pesan</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Tulis pesan Anda"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary-custom">Kirim Pesan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
