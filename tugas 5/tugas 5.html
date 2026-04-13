@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinoMarket | Sahabat Purba, Gaya Masa Depan</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --dino-primary: #00b894; 
+            --dino-secondary: #0984e3; 
+            --dino-danger: #ff7675; 
+            --bg-body: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+        
+        body { 
+            background: var(--bg-body); 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            color: #1e293b; 
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR REFINEMENT */
+        .navbar { 
+            background: var(--glass); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            padding: 0.7rem 0;
+        }
+        .nav-container { padding: 0 24px; width: 100%; }
+        
+        .logo-icon { 
+            background: linear-gradient(135deg, var(--dino-primary), var(--dino-secondary)); 
+            width: 42px; height: 42px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: white; cursor: pointer; transition: 0.4s;
+            box-shadow: 0 6px 12px rgba(0,184,148,0.2);
+        }
+
+        /* TYPEWRITER BOX */
+        .typewriter-box {
+            flex-grow: 1;
+            text-align: center;
+            max-width: 450px;
+            background: rgba(0, 184, 148, 0.08);
+            border-radius: 50px;
+            padding: 6px 20px;
+            margin: 0 20px;
+            border: 1px dashed var(--dino-primary);
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #dinoTypewriter {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--dino-primary);
+            white-space: nowrap;
+        }
+
+        /* CARDS */
+        .p-card { 
+            border: none; border-radius: 24px; background: white; 
+            transition: 0.4s; height: 100%; overflow: hidden; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+            position: relative; border: 1px solid rgba(0,0,0,0.03);
+        }
+        .p-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 25px rgba(0,0,0,0.08); 
+            border-color: var(--dino-primary);
+        }
+        .p-img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #f1f5f9; }
+        .p-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .p-card:hover .p-img-wrap img { transform: scale(1.1); }
+        
+        .fav-btn { 
+            position: absolute; top: 12px; right: 12px; z-index: 10; 
+            background: white; border: none; width: 32px; height: 32px; 
+            border-radius: 10px; display: flex; align-items: center; 
+            justify-content: center; color: #cbd5e1; transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .fav-btn.active { color: var(--dino-danger); transform: scale(1.1); }
+
+        /* FLASH SALE */
+        .flash-sale-box { 
+            background: linear-gradient(135deg, #ef4444, #f87171); 
+            border-radius: 32px; padding: 2rem; color: white; margin-bottom: 3rem;
+        }
+        .timer-unit { 
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);
+            padding: 8px 12px; border-radius: 10px; font-weight: 800;
+            display: inline-block; min-width: 45px; text-align: center;
+        }
+
+        /* TESTIMONI CAROUSEL FIX */
+        .testi-card {
+            background: white; border-radius: 20px; padding: 20px;
+            border: 1px solid #f1f5f9; height: 100%; transition: 0.3s;
+        }
+        .testi-card:hover { border-color: var(--dino-primary); background: #f0fff4; }
+        .user-avatar {
+            width: 35px; height: 35px; background: #e2e8f0;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-weight: 700; color: var(--dino-primary);
+        }
+
+        /* FOOTER */
+        footer { 
+            background: #0f172a; color: #94a3b8; padding: 80px 0 40px; 
+            border-radius: 60px 60px 0 0; margin-top: 100px; 
+        }
+        footer a { color: #94a3b8; text-decoration: none; transition: 0.3s; display: block; margin-bottom: 0.8rem; }
+        footer a:hover { color: var(--dino-primary); padding-left: 5px; }
+
+        .pointer { cursor: pointer; }
+        .fw-800 { font-weight: 800; }
+        #toast { 
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            background: #1e293b; color: white; padding: 14px 30px; 
+            border-radius: 16px; display: none; z-index: 10000; font-weight: 600;
+        }
+        /* PROMO BAR MODERN (REPLACE MARQUEE) */
+.promo-bar {
+    background: #0de9ae; /* Hijau tua */
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    position: relative;
+}
+
+.promo-text {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 500;
+    animation: promoScroll 18s linear infinite;
+}
+
+@keyframes promoScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+        @media (max-width: 992px) {
+            .typewriter-box { display: none !important; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="toast">🦖 Roar! Berhasil!</div>
+
+<div class="promo-bar text-center">
+    <div class="promo-text">
+        ⚡ DINO SALE 2026: GUNAKAN KODE "RAWR" UNTUK CASHBACK 100% | GRATIS ONGKIR SEJAGAT RAYA | CICILAN 0% TANPA BUNGA TANPA RIBA! ⚡
+    </div>
+</div>
+
+<nav class="navbar sticky-top">
+    <div class="nav-container">
+        <div class="d-flex align-items-center justify-content-between">
+            
+            <div class="d-flex align-items-center">
+                <button class="btn border-0 p-0 me-3" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+                    <i class="bi bi-list fs-1 text-dark"></i>
+                </button>
+                <div class="logo-icon me-2" onclick="location.reload()">🦖</div>
+                <div class="d-none d-md-block">
+                    <span class="fw-800 fs-5 d-block" style="letter-spacing: -0.5px">DinoMarket</span>
+                <span class="slogan">Sahabat Purba, Gaya Masa Depan</span>
+                </div>
+            </a>
+        </div>
+
+            <div class="typewriter-box">
+                <div id="dinoTypewriter"></div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div id="userZone">
+                    <button class="btn btn-dark rounded-pill px-4 fw-700 shadow-sm btn-sm" data-bs-toggle="modal" data-bs-target="#authModal">Gabung</button>
+                </div>
+                <div class="position-relative pointer p-1" data-bs-toggle="offcanvas" data-bs-target="#cartBox">
+                    <i class="bi bi-handbag-fill fs-2 text-primary"></i>
+                    <span id="cartCount" class="badge rounded-circle bg-danger position-absolute top-0 start-50 translate-middle" style="font-size: 10px;">0</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="flash-sale-box shadow-lg">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+            <h2 class="fw-800 m-0"><i class="bi bi-lightning-charge-fill text-warning"></i> FLASH SALE SORE INI</h2>
+            <div class="d-flex gap-2 align-items-center">
+                <span class="timer-unit" id="h-box">02</span> : 
+                <span class="timer-unit" id="m-box">00</span> : 
+                <span class="timer-unit" id="s-box">00</span>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 g-3" id="flashGrid"></div>
+    </div>
+
+    <div id="katalogArea" class="bg-white p-4 rounded-4 shadow-sm mb-5">
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
+                    <input type="text" id="searchInput" class="form-control bg-light border-0" placeholder="Sim salabim cari apa..." onkeyup="filterProducts()">
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <select id="filterCat" class="form-select border-0 bg-light fw-600" onchange="filterProducts()">
+                    <option value="Semua">Semua Kategori</option>
+                    <option value="Gadget">Gadget</option>
+                    <option value="Mobil">Mobil</option>
+                    <option value="Hobi">Hobi</option>
+                    <option value="Fesyen">Fesyen</option>
+                </select>
+            </div>
+            <div class="col-6 col-lg-4">
+                <select id="filterPrice" class="form-select border-0 bg-light fw-600" onchange="filterProducts()">
+                    <option value="default">Urutkan Harga</option>
+                    <option value="low">Harga Terendah</option>
+                    <option value="high">Harga Tertinggi</option>
+                </select>
+            </div>
+        </div>
+    </div>
+ <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-800 mb-0">Rekomendasi Spesial Untukmu 🦕</h4>
+        <button class="btn btn-sm btn-outline-success rounded-pill fw-bold">Lihat Semua</button>
+    </div>
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4" id="mainGrid"></div>
+</div>
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4" id="mainGrid"></div>
+
+    <div class="mt-5 pt-5">
+        <div class="text-center mb-5">
+            <h3 class="fw-800">💬 Suara Sahabat Dino</h3>
+            <p class="text-muted">Review jujur dari warga Zaman Kapur</p>
+        </div>
+        <div id="testiCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="testiContent">
+                </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel" data-bs-slide="prev" style="width: 5%; filter: invert(1);">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel" data-bs-slide="next" style="width: 5%; filter: invert(1);">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container text-center text-md-start">
+        <div class="row g-5">
+            <div class="col-lg-4 pe-lg-5">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-4">
+                    <div class="logo-icon" style="width:35px; height:35px">🦖</div>
+                    <h4 class="text-white fw-800 m-0">DinoMarket</h4>
+                </div>
+                <p class="small lh-lg opacity-75">Marketplace penyedia kebutuhan masa kini dengan teknologi purba terdepan. Aman, Cepat, dan Tangguh sejak Zaman Kapur.</p>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-white fw-bold mb-4">Perusahaan</h6>
+                <a href="#">Tentang Kami</a>
+                <a href="#">Karier</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-white fw-bold mb-4">Bantuan</h6>
+                <a href="#">Pusat Bantuan</a>
+                <a href="#">Lacak Pesanan</a>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="text-white fw-bold mb-4">Pembayaran</h6>
+                <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
+                    <span class="badge bg-light text-dark px-3 py-2">BCA</span>
+                    <span class="badge bg-light text-dark px-3 py-2">DANA</span>
+                    <span class="badge bg-light text-dark px-3 py-2">GOPAY</span>
+                </div>
+            </div>
+        </div>
+        <hr class="my-5 opacity-10 text-white">
+        <div class="text-center small opacity-50">© 2026 DinoMarket Indonesia. Made with Dino-Power.</div>
+    </div>
+</footer>
+
+<div class="modal fade" id="authModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-5 border-0 shadow-lg">
+            <div id="loginForm">
+                <h3 class="fw-800 mb-4 text-center">Selamat Datang</h3>
+                <input type="email" id="loginEmail" class="form-control py-3 mb-3 rounded-4 bg-light border-0" placeholder="Email/Nomor Telepon">
+                <input type="password" id="loginPass" class="form-control py-3 mb-4 rounded-4 bg-light border-0" placeholder="Kata Sandi">
+                <button class="btn btn-success w-100 py-3 rounded-pill fw-800 shadow-sm" onclick="doLogin()">MASUK</button>
+                <p class="text-center mt-3 small">Belum punya akun? <span class="text-success fw-bold pointer" onclick="toggleAuth(true)">Daftar</span></p>
+            </div>
+            <div id="regForm" style="display:none">
+                <h3 class="fw-800 mb-4 text-center">Daftar Akun</h3>
+                <input type="text" id="regName" class="form-control mb-2 py-3 rounded-4 bg-light border-0" placeholder="Username">
+                <input type="email" id="regEmail" class="form-control mb-2 py-3 rounded-4 bg-light border-0" placeholder="Email">
+                <input type="password" id="regPass" class="form-control mb-4 py-3 rounded-4 bg-light border-0" placeholder="Nomor Telepon">
+                <input type="password" id="regPass" class="form-control mb-4 py-3 rounded-4 bg-light border-0" placeholder="Kata Sandi">
+                <button class="btn btn-primary w-100 py-3 rounded-pill fw-800 shadow-sm" onclick="doRegister()">DAFTAR</button>
+                <p class="text-center mt-3 small"><span class="text-muted pointer" onclick="toggleAuth(false)">Sudah punya akun? Login</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="profileModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4 rounded-5 border-0 shadow-lg">
+            <h4 class="fw-800 mb-4 text-center">Profil & Alamat</h4>
+            <div class="bg-light p-3 rounded-4 mb-4">
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="logo-icon fs-4" id="pAvatar" style="width:50px; height:50px">U</div>
+                    <div>
+                        <div id="pName" class="fw-800">Nama User</div>
+                        <div class="small text-muted" id="pLabel">Alamat belum disetel</div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" id="addrLabel" class="form-control border-0 bg-light py-2 mb-2" placeholder="Label: Rumah / Kantor">
+            <textarea id="addrFull" class="form-control border-0 bg-light py-2 mb-4" rows="3" placeholder="Alamat Lengkap..."></textarea>
+            <div class="d-grid gap-2">
+                <button class="btn btn-dark py-3 rounded-pill fw-700" onclick="saveAddress()">SIMPAN</button>
+                <button class="btn btn-link text-danger text-decoration-none btn-sm" onclick="logout()">Keluar Akun</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content overflow-hidden rounded-5 border-0">
+            <div class="row g-0">
+                <div class="col-md-6"><img id="mdImg" src="" class="w-100 h-100 object-fit-cover"></div>
+                <div class="col-md-6 p-4 p-md-5 bg-white">
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    <span id="mdCat" class="badge bg-success-subtle text-success mb-3 px-3 py-2 rounded-pill fw-700"></span>
+                    <h2 id="mdName" class="fw-800 mb-2"></h2>
+                    <h3 id="mdPrice" class="text-primary fw-800 mb-4"></h3>
+                    <p id="mdDesc" class="text-muted lh-lg mb-4"></p>
+                    <button class="btn btn-success w-100 py-3 rounded-pill fw-800 shadow" onclick="addToCart()">TAMBAH KERANJANG 🛒</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-start" id="sidebarMenu">
+    <div class="offcanvas-header border-bottom p-4"><h5 class="fw-800 m-0">KATEGORI</h5><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body p-0" id="sideLinks"></div>
+</div>
+
+<div class="offcanvas offcanvas-end" id="cartBox">
+    <div class="offcanvas-header border-bottom p-4"><h5 class="fw-800 m-0">KERANJANG</h5><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body d-flex flex-column p-4">
+        <div id="cartList" class="flex-grow-1 overflow-auto"></div>
+        <div class="mt-auto pt-4 border-top">
+            <div class="d-flex justify-content-between mb-3"><span class="fw-600">Total</span><span id="cartTotal" class="fw-800 text-primary fs-5">Rp 0</span></div>
+            <button class="btn btn-success w-100 py-3 rounded-pill fw-800" onclick="checkout()">CHECKOUT</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+   const ITEMS = [
+        { id:1, cat:'Gadget', name:'DinoPhone 16 Pro Max', price:18500000, img:'https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Generasi terbaru dengan chip Rex-Core 5. Kamera Raptor-Eye 200MP.' },
+        { id:2, cat:'Gadget', name:'DinoBook Air M3', price:19500000, img:'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400', desc:'Laptop tertipis di masanya. Ringan namun sekuat rahang T-Rex.' },
+        { id:3, cat:'Mobil', name:'SUV Raptor XT 2026', price:450000000, img:'https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Kendaraan segala medan. Dilengkapi dengan armor baja purba.' },
+        { id:4, cat:'Mobil', name:'Rex Cruiser Luxury', price:650000000, img:'https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Interior kulit Triceratops sintetis dan sistem audio menggelegar.' },
+        { id:5, cat:'Hobi', name:'Drone Ptero-Scan 8K', price:8200000, img:'https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Drone pengintai dengan stabilitas udara tinggi.' },
+        { id:6, cat:'Hobi', name:'Dino-Box Console Gen-5', price:7500000, img:'https://images.pexels.com/photos/4523023/pexels-photo-4523023.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Konsol game masa depan. Frame rate stabil 120FPS.' },
+        { id:7, cat:'Fesyen', name:'Sepatu Raptor Run v2', price:2100000, img:'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Sepatu lari dengan teknologi pegas karbon.' },
+        { id:8, cat:'Fesyen', name:'Jaket Tech-Dino Waterproof', price:950000, img:'https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Bahan nanofiber yang menolak air dan angin.' },
+        // --- TAMBAHAN 4 PRODUK BARU ---
+        { id:9, cat:'Gadget', name:'DinoWatch Ultra', price:4200000, img:'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Smartwatch tahan banting dengan sensor detak jantung purba.' },
+        { id:10, cat:'Fesyen', name:'Kacamata Raptor Vision', price:1500000, img:'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Lensa polarized dengan perlindungan UV dari meteor.' },
+        { id:11, cat:'Hobi', name:'Keyboard Mechanical Rex-Type', price:1800000, img:'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Switch tactile suara menggelegar seperti auman T-Rex.' },
+        { id:12, cat:'Gadget', name:'DinoBuds Pro Wireless', price:2300000, img:'https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=400', desc:'Audio jernih dengan fitur Noise Cancellation super kedap.' }
+    ];
+
+    let cart = [], favs = [], currentId = null;
+
+    // Countdown Logic
+    function startFlashSaleTimer() {
+        let target = new Date().getTime() + (2 * 60 * 60 * 1000) + (45 * 60 * 1000);
+        setInterval(() => {
+            let now = new Date().getTime();
+            let d = target - now;
+            if (d < 0) return;
+            document.getElementById('h-box').innerText = String(Math.floor((d % (86400000)) / (3600000))).padStart(2, '0');
+            document.getElementById('m-box').innerText = String(Math.floor((d % (3600000)) / (60000))).padStart(2, '0');
+            document.getElementById('s-box').innerText = String(Math.floor((d % (60000)) / 1000)).padStart(2, '0');
+        }, 1000);
+    }
+
+    // Typewriter Logic
+    const dinoTexts = ["🦖 Flash Sale Sedang Berlangsung!", "💎 Member Baru Diskon 50%!", "🚚 Gratis Ongkir se-Nusantara!", "🔥 DinoPhone 16 Ready Stok!"];
+    let tIdx = 0, cIdx = 0, isDel = false;
+    function typeWriter() {
+        const target = document.getElementById("dinoTypewriter");
+        const fullTxt = dinoTexts[tIdx];
+        target.textContent = isDel ? fullTxt.substring(0, cIdx--) : fullTxt.substring(0, cIdx++);
+        if (!isDel && cIdx > fullTxt.length) { isDel = true; setTimeout(typeWriter, 2000); }
+        else if (isDel && cIdx < 0) { isDel = false; tIdx = (tIdx + 1) % dinoTexts.length; setTimeout(typeWriter, 500); }
+        else { setTimeout(typeWriter, isDel ? 40 : 80); }
+    }
+
+    // Product Functions
+    function filterProducts() {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        const cat = document.getElementById('filterCat').value;
+        const sort = document.getElementById('filterPrice').value;
+        let pool = ITEMS.filter(x => (cat==='Semua' || x.cat===cat) && x.name.toLowerCase().includes(q));
+        if(sort==='low') pool.sort((a,b)=>a.price-b.price);
+        if(sort==='high') pool.sort((a,b)=>b.price-a.price);
+
+        document.getElementById('mainGrid').innerHTML = pool.map(x => `
+            <div class="col" onclick="openDetail(${x.id})">
+                <div class="p-card shadow-sm">
+                    <button class="fav-btn ${favs.includes(x.id)?'active':''}" onclick="event.stopPropagation(); toggleFav(${x.id})">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                    <div class="p-img-wrap"><img src="${x.img}" loading="lazy"></div>
+                    <div class="p-3">
+                        <small class="fw-700 text-primary opacity-75 text-uppercase" style="font-size:10px">${x.cat}</small>
+                        <div class="fw-700 text-truncate my-1">${x.name}</div>
+                        <div class="text-dark fw-800">Rp ${x.price.toLocaleString()}</div>
+                    </div>
+                </div>
+            </div>`).join('');
+    }
+
+    function openDetail(id) {
+        currentId = id; const p = ITEMS.find(x=>x.id===id);
+        document.getElementById('mdImg').src = p.img;
+        document.getElementById('mdName').innerText = p.name;
+        document.getElementById('mdCat').innerText = p.cat;
+        document.getElementById('mdPrice').innerText = "Rp " + p.price.toLocaleString();
+        document.getElementById('mdDesc').innerText = p.desc;
+        new bootstrap.Modal('#detailModal').show();
+    }
+
+    function toggleFav(id) { favs.includes(id) ? favs=favs.filter(i=>i!==id) : favs.push(id); filterProducts(); toast("Favorit Diupdate!"); }
+    function addToCart() { cart.push(ITEMS.find(x=>x.id===currentId)); updateCart(); bootstrap.Modal.getInstance('#detailModal').hide(); toast("Masuk Keranjang! 🛒"); }
+    
+    function updateCart() {
+        document.getElementById('cartCount').innerText = cart.length;
+        document.getElementById('cartList').innerHTML = cart.map((x,i)=>`
+            <div class="d-flex align-items-center gap-3 bg-light p-3 rounded-4 mb-3">
+                <img src="${x.img}" width="50" height="50" class="rounded-3 object-fit-cover">
+                <div class="flex-grow-1"><div class="fw-700 small text-truncate" style="max-width:140px">${x.name}</div><div class="text-primary fw-800 small">Rp ${x.price.toLocaleString()}</div></div>
+                <i class="bi bi-trash3-fill text-danger pointer" onclick="cart.splice(${i},1); updateCart()"></i>
+            </div>`).join('');
+        document.getElementById('cartTotal').innerText = "Rp " + cart.reduce((s,x)=>s+x.price,0).toLocaleString();
+    }
+
+    // Testimoni Logic (Multiple Slides)
+    function renderTestimonis() {
+        const comms = [
+            {u:"Budi Sudarsono", c:"DinoPhone 16 Pro Max-nya gila! Pengiriman cuma sehari.", a:"B"},
+            {u:"Siska Rose", c:"Jaket Tech-Dino sangat stylish. Mantap!", a:"S"},
+            {u:"Andi Wijaya", c:"Rex Cruiser-nya beneran mewah. Gak nyesel beli.", a:"A"},
+            {u:"Lina Marlina", c:"Packaging aman banget. Double bubble wrap!", a:"L"},
+            {u:"Eko Prasetyo", c:"Drone Ptero-Scan stabil buat dokumentasi proyek.", a:"E"},
+            {u:"Mita Amalia", c:"CS sangat responsif pas nanya soal ukuran sepatu.", a:"M"}
+        ];
+        
+        let html = '';
+        for(let i=0; i < Math.ceil(comms.length/3); i++) {
+            html += `<div class="carousel-item ${i===0?'active':''}"><div class="row g-3 px-5">`;
+            for(let j=0; j<3; j++) {
+                let item = comms[i*3+j];
+                if(item) {
+                    html += `
+                    <div class="col-md-4">
+                        <div class="testi-card shadow-sm">
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="user-avatar">${item.a}</div>
+                                <div class="fw-800" style="font-size:12px">${item.u}</div>
+                            </div>
+                            <p class="text-muted mb-0 small italic">"${item.c}"</p>
+                        </div>
+                    </div>`;
+                }
+            }
+            html += `</div></div>`;
+        }
+        document.getElementById('testiContent').innerHTML = html;
+    }
+
+    // AUTH
+    function toggleAuth(isReg) { document.getElementById('loginForm').style.display=isReg?'none':'block'; document.getElementById('regForm').style.display=isReg?'block':'none'; }
+    function doLogin() { const e=document.getElementById('loginEmail').value; if(e) updateUserUI(e.split('@')[0]); }
+    function doRegister() { const n=document.getElementById('regName').value; if(n) updateUserUI(n); }
+    function updateUserUI(n) {
+        document.getElementById('userZone').innerHTML = `<button class="btn btn-outline-dark rounded-pill fw-800 px-4 btn-sm" onclick="openProfile()">🦖 ${n}</button>`;
+        bootstrap.Modal.getInstance('#authModal')?.hide(); localStorage.setItem('dino_user', n);
+        document.getElementById('pName').innerText = n;
+        document.getElementById('pAvatar').innerText = n.charAt(0).toUpperCase();
+    }
+    function openProfile() {
+        document.getElementById('pLabel').innerText = localStorage.getItem('dino_addr_label') || "Alamat belum disetel";
+        new bootstrap.Modal('#profileModal').show();
+    }
+    function saveAddress() {
+        const l = document.getElementById('addrLabel').value, f = document.getElementById('addrFull').value;
+        if(l && f) { localStorage.setItem('dino_addr_label', l); localStorage.setItem('dino_addr_detail', f); bootstrap.Modal.getInstance('#profileModal').hide(); toast("Alamat Disimpan! 🏠"); }
+    }
+    function logout() { localStorage.clear(); location.reload(); }
+    function toast(m) { const t=document.getElementById('toast'); t.innerText=m; t.style.display='block'; setTimeout(()=>t.style.display='none', 2500); }
+    function checkout() { if(cart.length===0) return alert("Kosong!"); toast("Menghubungkan ke Gateway... 🦖"); }
+
+    window.onload = () => {
+        filterProducts();
+        typeWriter();
+        startFlashSaleTimer();
+        renderTestimonis();
+        const saved = localStorage.getItem('dino_user'); if(saved) updateUserUI(saved);
+        
+        // Render Flash Sale Items
+        document.getElementById('flashGrid').innerHTML = ITEMS.slice(0, 4).map(x => `
+            <div class="col" onclick="openDetail(${x.id})">
+                <div class="p-card border-0 bg-white">
+                    <div class="p-img-wrap"><img src="${x.img}"></div>
+                    <div class="p-2 text-center">
+                        <div class="fw-800 text-danger">Rp ${(x.price*0.4).toLocaleString()}</div>
+                        <div class="text-muted text-decoration-line-through small">Rp ${x.price.toLocaleString()}</div>
+                    </div>
+                </div>
+            </div>`).join('');
+
+        // Sidebar Cats
+        document.getElementById('sideLinks').innerHTML = ["Semua", "Gadget", "Mobil", "Hobi", "Fesyen"].map(c => `
+            <button class="list-group-item list-group-item-action py-4 px-4 fw-700 border-0" onclick="document.getElementById('filterCat').value='${c}'; filterProducts(); bootstrap.Offcanvas.getInstance('#sidebarMenu').hide()">
+                <i class="bi bi-tag-fill me-2 text-primary"></i> ${c}
+            </button>`).join('');
+    };
+</script>
+</body>
+</html>
